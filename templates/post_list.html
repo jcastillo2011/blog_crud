@@ -1,15 +1,7 @@
+{% extends "_base.html" %}
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>LISTADO DE POST</h1>
-     {% for publication in post_list %}
+{% block content %}
+    {% for publication in post_list %}
         <ul>
             <li>
                 <a href="{% url 'post_detail' publication.pk %}"><h2>{{ publication.title }}</h2></a>
@@ -17,6 +9,6 @@
             </li>
         </ul>
      {% endfor %}
+{% endblock content %}
 
-</body>
-</html>
+

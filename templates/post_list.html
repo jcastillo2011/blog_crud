@@ -12,7 +12,7 @@
      {% for publication in post_list %}
         <ul>
             <li>
-                <h2>{{ publication.title }}</h2>
+                <a href="{% url 'post_detail' publication.pk %}"><h2>{{ publication.title }}</h2></a>
                 <p>{{ publication.author }}</p>
             </li>
         </ul>

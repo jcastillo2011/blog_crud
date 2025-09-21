@@ -1,0 +1,10 @@
+{% extends "_base.html" %}
+{% block content %}
+  <h2>Crear nueva publicación</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+  </form>
+  <a href="{% url 'post_list' %}">Volver al listado</a>
+{% endblock %}

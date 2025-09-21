@@ -8,6 +8,8 @@
                 <p>{{ publication.author }}</p>
             </li>
         </ul>
+
+    <a href="{% url 'post_create' %}">Crear nueva publicación</a>
      {% endfor %}
 {% endblock content %}
 

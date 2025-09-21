@@ -9,6 +9,7 @@
             </li>
         </ul>
         <a href="{% url 'post_edit' publication.pk %}">Editar</a>
+        <a href="{% url 'post_delete' publication.pk %}">Eliminar</a>
      {% endfor %}
      <br> <br>
          <a href="{% url 'post_create' %}">Nuevo Post</a>

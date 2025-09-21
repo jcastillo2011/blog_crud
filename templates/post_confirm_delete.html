@@ -1,0 +1,10 @@
+{% extends "_base.html" %}
+{% block content %}
+  <h2>¿Estás seguro que deseas eliminar esta publicación?</h2>
+  <p>{{ post.title }}</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Eliminar</button>
+    <a href="{% url 'post_list' %}">Cancelar</a>
+  </form>
+{% endblock %}

@@ -30,3 +30,9 @@ class PostUpdateView(UpdateView):
     fields = ['title', 'author', 'body']  # Usa los campos del modelo
     template_name = 'post_form.html'
     success_url = reverse_lazy('post_list')
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = 'post_confirm_delete.html'
+    success_url = reverse_lazy('post_list')
+

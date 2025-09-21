@@ -1,6 +1,6 @@
 {% extends "_base.html" %}
 {% block content %}
-  <h2>Crear nueva publicación</h2>
+  <h2>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} publicación</h2>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

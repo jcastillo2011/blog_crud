@@ -8,8 +8,8 @@
     <h3>ACTUALIZADO EL:</h3><p>{{ post.updated_at }}</p>
 
    {# volver al listado de publicaciones #}
-
-    <a href="{% url 'post_list' %}">Volver al listado de publicaciones</a>
-
+    
+    <a href="{% url 'post_list' %}">Volver</a>
+    <a href="{% url 'post_edit' post.pk %}">Editar</a>
 
 {% endblock content %}

@@ -8,7 +8,9 @@
                 <p>{{ publication.author }}</p>
             </li>
         </ul>
+        <a href="{% url 'post_edit' publication.pk %}">Editar</a>
      {% endfor %}
+     <br> <br>
          <a href="{% url 'post_create' %}">Nuevo Post</a>
 {% endblock content %}
 

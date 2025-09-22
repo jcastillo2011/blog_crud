@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{% block title %}Blog{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blogs/style.css' %}">
 </head>
-<body>
-    <style>
-    h1 {
-      text-align: center;
-    }
-  </style>
-  
+<body> 
+    <div class="container">
     <a href="{% url 'post_list' %}"><h1>BLOG PERSONAL</h1></a>
-    {% block content %}
-    {% endblock %}
+    </div>
+        {% block content %}
+        {% endblock %}
+    
+    
+    <div class="footer">
+        <p>&copy; 2024 Blog Personal. Todos los derechos reservados.</p>  
+</div>  
 </body>
 </html>
 

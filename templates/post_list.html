@@ -2,6 +2,7 @@
 
 {% block content %}
     {% for publication in post_list %}
+         <div class="card"></div>
         <ul>
             <li>
                 <a href="{% url 'post_detail' publication.pk %}"><h2>{{ publication.title }}</h2></a>
@@ -10,6 +11,8 @@
         </ul>
         <a href="{% url 'post_edit' publication.pk %}">Editar</a>
         <a href="{% url 'post_delete' publication.pk %}">Eliminar</a>
+        </div>
+
      {% endfor %}
      <br> <br>
          <a href="{% url 'post_create' %}">Nuevo Post</a>

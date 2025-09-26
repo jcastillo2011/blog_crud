@@ -1,16 +1,43 @@
 {% extends "_base.html" %}
+
+{% block title %}{{ post.title }} - Blog Personal{% endblock %}
+
 {% block content %}
-    <h2>DETALLE DE LA PUBLICACION</h2>
-    <h3>TITULO: {{post.title }}</h3>
-    <h3>AUTOR:</h3><p>{{ post.author }}</p>
-    <h3>CUERPO:</h3><p>{{ post.body }}</p>
-    <h3>CREADO EL:</h3><p>{{ post.created_at }}</p>
-    <h3>ACTUALIZADO EL:</h3><p>{{ post.updated_at }}</p>
-
-   {# volver al listado de publicaciones #}
-    
-    <a href="{% url 'post_list' %}">Volver</a>
-    <a href="{% url 'post_edit' post.pk %}">Editar</a>
-    <a href="{% url 'post_delete' post.pk %}">Eliminar</a>
-
+    <article class="post-detail">
+        <header>
+            <h1>{{ post.title }}</h1>
+            
+            <div class="post-meta">
+                <div class="post-author">
+                    <span>{{ post.author }}</span>
+                </div>
+                <time datetime="{{ post.created_at|date:'Y-m-d' }}">
+                    {{ post.created_at|date:'d M Y' }}
+                </time>
+            </div>
+        </header>
+        
+        <div class="post-content">
+            {{ post.body|linebreaks }}
+        </div>
+        
+        <div class="post-dates">
+            <div class="date-item">
+                <span class="date-label">Creado</span>
+                <span class="date-value">{{ post.created_at|date:'d M Y, H:i' }}</span>
+            </div>
+            {% if post.updated_at != post.created_at %}
+            <div class="date-item">
+                <span class="date-label">Última actualización</span>
+                <span class="date-value">{{ post.updated_at|date:'d M Y, H:i' }}</span>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="post-actions">
+            <a href="{% url 'post_list' %}" class="btn btn-secondary">← Volver al listado</a>
+            <a href="{% url 'post_edit' post.pk %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">Eliminar</a>
+        </div>
+    </article>
 {% endblock content %}

@@ -1,21 +1,45 @@
 {% extends "_base.html" %}
 
+{% block title %}Lista de Posts - Blog Personal{% endblock %}
+
 {% block content %}
     {% for publication in post_list %}
-         <div class="card"></div>
-        <ul>
-            <li>
-                <a href="{% url 'post_detail' publication.pk %}"><h2>{{ publication.title }}</h2></a>
-                <p>{{ publication.author }}</p>
-            </li>
-        </ul>
-        <a href="{% url 'post_edit' publication.pk %}">Editar</a>
-        <a href="{% url 'post_delete' publication.pk %}">Eliminar</a>
+        <article class="post-card">
+            <a href="{% url 'post_detail' publication.pk %}" class="post-title-link">
+                <h2>{{ publication.title }}</h2>
+            </a>
+            
+            <div class="post-meta">
+                <div class="post-author">
+                    <span>{{ publication.author }}</span>
+                </div>
+                <time datetime="{{ publication.created_at|date:'Y-m-d' }}">
+                    {{ publication.created_at|date:'d M Y' }}
+                </time>
+            </div>
+            
+            {% if publication.body %}
+                <div class="post-content">
+                    {{ publication.body|truncatewords:30 }}
+                </div>
+            {% endif %}
+            
+            <div class="post-actions">
+                <a href="{% url 'post_detail' publication.pk %}" class="btn btn-primary">Leer más</a>
+                <a href="{% url 'post_edit' publication.pk %}" class="btn btn-secondary">Editar</a>
+                <a href="{% url 'post_delete' publication.pk %}" class="btn btn-danger">Eliminar</a>
+            </div>
+        </article>
+    {% empty %}
+        <div class="post-card">
+            <h2>No hay publicaciones aún</h2>
+            <p>¡Sé el primero en crear una publicación!</p>
         </div>
-
-     {% endfor %}
-     <br> <br>
-         <a href="{% url 'post_create' %}">Nuevo Post</a>
+    {% endfor %}
+    
+    <div style="text-align: center;">
+        <a href="{% url 'post_create' %}" class="new-post-btn">Crear Nueva Publicación</a>
+    </div>
 {% endblock content %}
 
 

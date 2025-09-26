@@ -1,23 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Blog{% endblock %}</title>
+    <title>{% block title %}Blog Personal{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'blogs/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
-<body> 
-    <div class="container">
-    <a href="{% url 'post_list' %}"><h1>BLOG PERSONAL</h1></a>
-    </div>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <img src="{% static 'blogs/images/profile.jpg' %}" alt="Foto de perfil" class="profile-image">
+                <a href="{% url 'post_list' %}">
+                    <h1>Blog Personal</h1>
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
         {% block content %}
         {% endblock %}
+    </main>
     
-    
-    <div class="footer">
-        <p>&copy; 2024 Blog Personal. Todos los derechos reservados.</p>  
-</div>  
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Blog Personal. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html>
 
